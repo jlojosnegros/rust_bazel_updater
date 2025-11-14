@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 
 use anyhow::Ok;
+use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Dependency {
     // =================
     // Mandatory fields
@@ -19,20 +21,27 @@ pub struct Dependency {
     // Optional fields
     // =================
     /// Prefix to remove when extracting archive
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strip_prefix: Option<String>,
 
     /// Release Date (Format: YYYY-MM-DD)
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub release_date: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_category: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_url: Option<String>,
 
     /// Common Platform Enumeration
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpe: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub implied_untracked_deps: Option<Vec<String>>,
 }
 
