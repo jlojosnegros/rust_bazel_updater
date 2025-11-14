@@ -29,7 +29,7 @@ pub struct Dependency {
     pub release_date: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub use_category: Option<String>,
+    pub use_category: Option<Vec<String>>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub license: Option<String>,
