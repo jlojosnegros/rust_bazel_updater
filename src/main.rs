@@ -1,5 +1,4 @@
-mod commands;
-
+use bazel_updater::commands;
 use clap::{Arg, Command};
 use dotenv::dotenv;
 

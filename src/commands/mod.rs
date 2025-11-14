@@ -1,13 +1,13 @@
 use clap::{ArgMatches, Command};
 
+mod hello;
+
 pub fn configure(command: Command) -> Command {
-    command.subcommand(Command::new("hello").about("Hello world!"))
+    command.subcommand(hello::configure())
 }
 
 pub fn handle(matches: &ArgMatches) -> anyhow::Result<()> {
-    if let Some(_matches) = matches.subcommand_matches("hello") {
-        println!("Hello world");
-    }
+    hello::handle(matches)?;
 
     Ok(())
 }
